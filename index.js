@@ -1,4 +1,8 @@
+const { Command } = require("commander");
+
 const contacts = require("./db/contacts");
+
+const program = new Command();
 
 // TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
@@ -32,19 +36,31 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse();
+
+const options = program.opts();
+invokeAction(options);
+
 // invokeAction({ action: "list" });
 // invokeAction({ action: "getContact", id: "2" });
 // invokeAction({
 //   action: "addContact",
-//   name: "Petro",
-//   email: "petro@net",
+//   name: "XXXXXX",
+//   email: "xxxxx@xxx",
 //   phone: "123456",
 // });
-// invokeAction({ action: "removeContact", id: "3" });
-invokeAction({
-  action: "updateContact",
-  id: "3GFQ4C2mS0PAFDakhAfID",
-  name: "Oleg",
-  email: "petro@net3",
-  phone: "3333",
-});
+// invokeAction({ action: "removeContact", id: "ieL6-sECD69Fm9s0hCeHi" });
+// invokeAction({
+//   action: "updateContact",
+//   id: "5",
+//   name: "Update - Cyrus Jackson",
+//   email: "Update -nibh@semsempererat.com@net3",
+//   phone: "472-5218",
+// });
