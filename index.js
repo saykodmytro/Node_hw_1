@@ -7,21 +7,44 @@ async function invokeAction({ action, id, name, email, phone }) {
       const allContacts = await contacts.listContacts();
       return console.log(allContacts);
 
-    //     case "get":
-    //       const contact = await contacts.getContactById(id);
-    //       return console.log(contact);
+    case "getContact":
+      const contact = await contacts.getContactById(id);
+      return console.log(contact);
 
-    //     case "add":
-    //       const addContact = await contacts.addContact({ name, email, phone });
-    //       return console.log("addContact: ", addContact);
+    case "addContact":
+      const addContact = await contacts.addContact({ name, email, phone });
+      return console.log("addContact: ", addContact);
 
-    //     case "remove":
-    //       const deleteContact = await contacts.deleteContact(id);
-    //       return console.log("deleteContact: ", deleteContact);
+    case "removeContact":
+      const deleteContact = await contacts.removeContact(id);
+      return console.log("deleteContact: ", deleteContact);
 
-    //     default:
-    //       console.warn("\x1B[31m Unknown action type!");
+    case "updateContact":
+      const updateContact = await contacts.updateContact(id, {
+        name,
+        email,
+        phone,
+      });
+      return console.log("newContact: ", updateContact);
+
+    default:
+      console.warn("\x1B[31m Unknown action type!");
   }
 }
 
-invokeAction({ action: "list" });
+// invokeAction({ action: "list" });
+// invokeAction({ action: "getContact", id: "2" });
+// invokeAction({
+//   action: "addContact",
+//   name: "Petro",
+//   email: "petro@net",
+//   phone: "123456",
+// });
+// invokeAction({ action: "removeContact", id: "3" });
+invokeAction({
+  action: "updateContact",
+  id: "3GFQ4C2mS0PAFDakhAfID",
+  name: "Oleg",
+  email: "petro@net3",
+  phone: "3333",
+});
