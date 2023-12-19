@@ -4,7 +4,6 @@ const contacts = require("./db/contacts");
 
 const program = new Command();
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
