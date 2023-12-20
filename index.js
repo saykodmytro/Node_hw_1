@@ -1,6 +1,6 @@
 const { Command } = require("commander");
 
-const contacts = require("./db/contacts");
+const contacts = require("./contacts");
 
 const program = new Command();
 
